@@ -109,10 +109,11 @@ if(isset($_GET['msg'])){
 <style>
 .pages {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 30px 0 20px 0;
+    margin: 30px auto 20px auto;
     gap: 8px;
+    width: 80%;
 }
 .pages a {
     display: inline-block;
@@ -145,13 +146,29 @@ $rows=all("uploads"," limit $start,$div");
 ?>
 
 <div class="pages">
-    <a href="">第一頁</a>
-    <a href="">上一頁</a>
-    <a href="">1</a>
-    <a href="">2</a>
-    <a href="">3</a>
-    <a href="">下一頁</a>
-    <a href="">最後頁</a>
+    <a href="?p=1">第一頁</a>
+    <div>
+    <?php 
+    
+    if($now-1>0){
+        echo "<a href='?p=".($now-1)."'> << </a>";
+    } else {
+        echo "<a href='#'> << </a>";
+    }
+    
+    for($i=1;$i<=$pages;$i++){
+        echo "<a href='?p=$i'>$i</a>";
+    }
+
+
+    if($now+1<=$pages){
+        echo "<a href='?p=".($now+1)."'> >> </a>";
+    } else {
+        echo "<a href='#'> >> </a>";
+    }
+    ?>
+    </div>
+    <a href="?p=<?=$pages;?>">最後頁</a>
 </div>
 
 <!-- table.table>(tr>th*5)+(tr>td*5) -->
@@ -202,13 +219,29 @@ $rows=all("uploads"," limit $start,$div");
     <?php endforeach; ?>
  </table>
 <div class="pages">
-    <a href="">第一頁</a>
-    <a href="">上一頁</a>
-    <a href="">1</a>
-    <a href="">2</a>
-    <a href="">3</a>
-    <a href="">下一頁</a>
-    <a href="">最後頁</a>
+    <a href="?p=1">第一頁</a>
+    <div>
+    <?php 
+    
+    if($now-1>0){
+        echo "<a href='?p=".($now-1)."'> << </a>";
+    } else {
+        echo "<a href='#'> << </a>";
+    }
+    
+    for($i=1;$i<=$pages;$i++){
+        echo "<a href='?p=$i'>$i</a>";
+    }
+
+
+    if($now+1<=$pages){
+        echo "<a href='?p=".($now+1)."'> >> </a>";
+    } else {
+        echo "<a href='#'> >> </a>";
+    }
+    ?>
+    </div>
+    <a href="?p=<?=$pages;?>">最後頁</a>
 </div>
 <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
 
