@@ -21,6 +21,6 @@ $sql="insert into uploads(`name`,`type`,`description`) values ('$name','$type','
 $pdo->exec($sql);
 // echo "檔案上傳成功，檔名為：".$filename;
 
-header("location:manage.php?msg=檔案上傳成功，檔名為：".$filename);
+header("location:manage.php?msg=檔案上傳成功，檔名為：".$name);
 ?>
 
