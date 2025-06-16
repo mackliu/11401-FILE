@@ -133,13 +133,12 @@ $rows=$pdo->query("select * from uploads")->fetchAll(PDO::FETCH_ASSOC);
         <td><?=$row['name'];?></td>
         <td><?=$row['type'];?></td>
         <td>
-            <button>編輯</button><button>刪除</button>
+            <button onclick="location.href='edit_upload.php?id=<?=$row['id'];?>'">編輯</button>
+            <button onclick="location.href='del_upload.php?id=<?=$row['id'];?>'">刪除</button>
         </td>
     </tr>
     <?php endforeach; ?>
  </table>
-
-
 
 <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
 
